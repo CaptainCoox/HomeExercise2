@@ -18,7 +18,6 @@ class AddNoteActivity : AppCompatActivity() {
     }
 
     fun saveData (view: View){
-        val sharedPreferences = getSharedPreferences("notes", Context.MODE_PRIVATE)
 
         if (newTitle.text.isEmpty() || newTitle.text.length < 3) {
             fehler.text = "Der Titel muss befüllt sein und mindestens 3 Zeichen beinhalten!"
@@ -27,11 +26,6 @@ class AddNoteActivity : AppCompatActivity() {
             fehler.text = "Der Inhalt muss befüllt sein und mindestens 3 Zeichen beinhalten!"
         }
         else {
-            /*
-            sharedPreferences.edit().putString("title", newTitle.text.toString()).apply()
-            sharedPreferences.edit().putString("content", newContent.text.toString()).apply()
-            finish()
-            */
 
             db.noteDao.insert(Note(newTitle.text.toString(), newContent.text.toString()))
 
